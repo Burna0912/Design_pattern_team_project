@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShoesMall - Payment</title>
+  <style>
+    /* CSS 코드 */
+    :root {
+      --primary-color: #333;
+      --secondary-color: #666;
+      --accent-color: #ff6b6b;
+      --bg-color: #f5f5f5;
+      --font-family: 'Sunflower', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-color);
+      color: var(--primary-color);
+    }
+
+    .payment-page {
+      padding: 40px 0;
+    }
+
+    .payment-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+    }
+
+    .payment-container h2 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .cart-summary {
+      border-bottom: 1px solid #e5e5e5;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+
+    .cart-summary h3 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .cart-items {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .cart-items li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .cart-items li .product-name {
+      flex-grow: 1;
+      margin-right: 10px;
+    }
+
+    .cart-items li .product-price {
+      font-weight: bold;
+    }
+
+    .horizontal-line {
+            border-top: 1px solid #000;
+            width: 100%;
+            margin: 20px 0;
+        }
+
+    .total-price {
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .payment-form h3 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #e5e5e5;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .pay-btn {
+      background-color: var(--accent-color);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .pay-btn:hover {
+      background-color: #e05353;
+    }
+  </style>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header data-include-path="header.html"></header>
+
+  <section class="payment-page">
+    <div class="payment-container">
+      <h2>결제하기</h2>
+      
+      <div class="cart-summary">
+        <h3>장바구니 내역</h3>
+        <ul class="cart-items">
+          <!-- 장바구니 상품 정보 동적 생성 -->
+        </ul>
+        <div class="total-price">
+          <span>총 결제 금액:</span>
+          <span class="price"></span>
+        </div>
+      </div>
+
+      <div class="payment-form">
+        <h3>결제 정보 입력</h3>
+        <div class="horizontal-line"></div>
+
+        <div class="form-group recipient">
+          <label for="recipient">수령인</label>
+          <input type="text" id="recipient" name="recipient" placeholder="수령인 이름" required>
+        </div>
+        <div class="form-group shipping-name">
+          <label for="shipping-name">배송지명</label>
+          <input type="text" id="shipping-name" name="shipping-name" placeholder="배송지명" required>
+        </div>
+        <div class="form-group phone">
+          <label for="phone">휴대전화</label>
+          <input type="tel" id="phone" name="phone" placeholder="010-1234-5678" required>
+        </div>
+        <div class="form-group shipping-address">
+          <label for="shipping-address">배송지 주소</label>
+          <input type="text" id="shipping-address" name="shipping-address" placeholder="배송지 주소" required>
+        </div>
+        <div class="horizontal-line"></div>
+
+        <form>
+          <div class="form-group">
+            <label for="card-number">카드 번호</label>
+            <input type="text" id="card-number" name="card-number" placeholder="0000 0000 0000 0000" required>
+          </div>
+          <div class="form-group">
+            <label for="expiry-date">유효기간</label>
+            <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" required>
+          </div>
+          <div class="form-group">
+            <label for="cvv">CVV</label>
+            <input type="password" id="cvv" name="cvv" placeholder="123" required>
+          </div>
+          <button type="submit" class="pay-btn">결제하기</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer data-include-path="footer.html"></footer>
+
+  <script type="module" src="./js/payment.js"></script>
+</body>
+</html>
