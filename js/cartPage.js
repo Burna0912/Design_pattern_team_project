@@ -187,3 +187,24 @@ function cartListHandler(e) {
 if (cartContainer !== null) {
   cartContainer.addEventListener("click", cartListHandler);
 }
+
+// 장바구니 자바스크립트 코드
+document.addEventListener("DOMContentLoaded", () => {
+  const orderButton = document.querySelector(".total-order");
+
+  if (orderButton) {
+    orderButton.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      // 장바구니 데이터를 JSON 문자열로 변환
+      const cartData = JSON.stringify(saveCartGoods);
+
+      // URL 쿼리 파라미터로 전달
+      const url = new URL("payment.html", window.location.href);
+      url.searchParams.append("cart", encodeURIComponent(cartData));
+
+      // 결제 페이지로 이동
+      window.location.href = url.toString();
+    });
+  }
+});
