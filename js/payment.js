@@ -26,5 +26,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 총 결제 금액 표시
     totalPriceContainer.textContent = totalPrice.toLocaleString();
+  
+    const payButton = document.querySelector(".pay-btn");
+    if (payButton) {
+      payButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        window.location.href = "end.html";
+      });
   }
 });
